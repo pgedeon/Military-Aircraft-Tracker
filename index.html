@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Military Aircraft Tracker</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app__header">
+        <div>
+          <p class="app__eyebrow">Live Global View</p>
+          <h1>Military Aircraft Tracker</h1>
+          <p class="app__subtitle">
+            Visualize military aircraft activity worldwide with real-time position updates,
+            flight metadata, and mission highlights.
+          </p>
+        </div>
+        <div class="app__meta">
+          <div>
+            <p class="meta__label">Last update</p>
+            <p id="last-update" class="meta__value">Connecting…</p>
+          </div>
+          <div>
+            <p class="meta__label">Tracked aircraft</p>
+            <p id="aircraft-count" class="meta__value">0</p>
+          </div>
+        </div>
+      </header>
+
+      <main class="app__main">
+        <section class="panel panel--map">
+          <div id="map"></div>
+          <div class="map-legend">
+            <div class="legend__item"><span class="legend__dot legend__dot--active"></span> Active</div>
+            <div class="legend__item"><span class="legend__dot legend__dot--idle"></span> Grounded</div>
+            <div class="legend__item"><span class="legend__dot legend__dot--critical"></span> High priority</div>
+          </div>
+        </section>
+
+        <section class="panel panel--sidebar">
+          <div class="sidebar__section">
+            <h2>Mission highlights</h2>
+            <p>
+              Flights are classified using public callsigns and aircraft types. Toggle filters to narrow
+              to tankers, reconnaissance, or strike aircraft.
+            </p>
+            <div class="filters">
+              <button class="filter" data-filter="all">All</button>
+              <button class="filter" data-filter="tanker">Tankers</button>
+              <button class="filter" data-filter="recon">Recon</button>
+              <button class="filter" data-filter="strike">Strike</button>
+            </div>
+          </div>
+
+          <div class="sidebar__section">
+            <h2>Live feed</h2>
+            <div id="flight-list" class="flight-list" role="list"></div>
+          </div>
+
+          <div class="sidebar__section">
+            <h2>Data sources</h2>
+            <ul>
+              <li>OpenSky Network (primary)</li>
+              <li>Local fallback dataset (demo)</li>
+            </ul>
+            <p class="fineprint">
+              If the OpenSky API is unavailable due to rate limits or CORS restrictions, the app
+              automatically switches to a demo feed so the UI stays responsive.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="app.js"></script>
+  </body>
+</html>
