@@ -1,0 +1,10 @@
+{
+  "name": "military-aircraft-tracker",
+  "version": "1.0.0",
+  "description": "Live visualization of military aircraft traffic worldwide.",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve ."
+  }
+}
